@@ -1,5 +1,7 @@
 import pygame
 import player
+import asteroid
+import asteroidfield
 from constants import *
 
 def main():
@@ -14,13 +16,19 @@ def main():
     plyr_obj = player.Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+
+    roids = pygame.sprite.Group()
+    asteroid.Asteroid.containers = (roids, updatable, drawable)
+    asteroidfield.AsteroidField.containers = (updatable)
+    big_roids = asteroidfield.AsteroidField()
+
     state = 1
     while state > 0:
         updatable.update(dt)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        screen.fill("red", rect=None, special_flags=0)
+        screen.fill("black", rect=None, special_flags=0)
         for draws in drawable:
             draws.draw(screen)
         pygame.display.flip()
