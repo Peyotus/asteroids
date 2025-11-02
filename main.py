@@ -31,6 +31,10 @@ def main():
         screen.fill("black", rect=None, special_flags=0)
         for draws in drawable:
             draws.draw(screen)
+        for roid in roids:
+            if roid.check_collision(plyr_obj):
+                print("Game over!")
+                return
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
