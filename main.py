@@ -1,16 +1,19 @@
 import pygame
+import player
 from constants import *
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     state = 1
+    plyr_obj = player.Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     while state > 0:
         clock = pygame.time.Clock()
         dt = 0
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        plyr_obj.draw(screen)
         screen.fill("black", rect=None, special_flags=0)
         pygame.display.flip()
         clock.tick(60)
