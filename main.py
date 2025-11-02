@@ -2,6 +2,7 @@ import pygame
 import player
 import asteroid
 import asteroidfield
+import shot
 from constants import *
 
 def main():
@@ -16,11 +17,13 @@ def main():
     plyr_obj = player.Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-
     roids = pygame.sprite.Group()
     asteroid.Asteroid.containers = (roids, updatable, drawable)
     asteroidfield.AsteroidField.containers = (updatable)
     big_roids = asteroidfield.AsteroidField()
+
+    shooties = pygame.sprite.Group()
+    shot.Shot.containers = (shooties, updatable, drawable)
 
     state = 1
     while state > 0:
