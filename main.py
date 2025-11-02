@@ -35,6 +35,10 @@ def main():
         for draws in drawable:
             draws.draw(screen)
         for roid in roids:
+            for bullet in shooties:
+                if roid.check_collision(bullet):
+                    bullet.kill()
+                    roid.kill()
             if roid.check_collision(plyr_obj):
                 print("Game over!")
                 return
