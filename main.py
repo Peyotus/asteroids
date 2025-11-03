@@ -38,7 +38,7 @@ def main():
             for bullet in shooties:
                 if roid.check_collision(bullet):
                     bullet.kill()
-                    roid.kill()
+                    roid.split()
             if roid.check_collision(plyr_obj):
                 print("Game over!")
                 return
